@@ -28,4 +28,11 @@ class LocationService
         return $this->model->find($location_id);
     }
 
+    public function impersonateUserURL($location_id,$user_id)
+    {
+        $location = $this->find($location_id);
+        $token = tenancy()->impersonate($location, $user_id, $location->route('tenant.dashboard'), 'web')->token;
+        return $location->route('tenant.impersonate.auth.token', ['token' => $token]);
+    }
+
 }

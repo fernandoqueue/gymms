@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
-
+use Stancl\Tenancy\Features\UserImpersonation;
 /*
 |--------------------------------------------------------------------------
 | Tenant Routes
@@ -25,16 +25,16 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/', [App\Http\Controllers\Location\HomeController::class,'index']);
+    Route::get('/impersonate/{token}', function ($token) {
+        return UserImpersonation::makeResponse($token);
+    })->name('tenant.impersonate.auth.token');
+
 
     Route::middleware(['auth'])->group(function () {
 
-        Route::get('/dashboard', [App\Http\Controllers\Location\DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+        Route::get('/dashboard', [App\Http\Controllers\Location\DashboardController::class, 'dashboard'])->middleware(['auth'])->name('tenant.dashboard');
         
     });
     
-
-    
-
-    //Fortify
     require __DIR__.'/auth.php';
 });

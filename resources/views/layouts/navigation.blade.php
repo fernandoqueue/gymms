@@ -11,16 +11,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-nav-link href="{{ route('central.dashboard.index') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-nav-link>
                 <x-nav-link href="{{ route('central.dashboard.location.index') }}" :active="request()->routeIs('central.dashboard.location.index')">
                     Gym
                 </x-nav-link>
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-nav-link href="" :active="request()->routeIs('dashboard')">
                     Admin
                 </x-nav-link>
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-nav-link href="" :active="request()->routeIs('dashboard')">
                     Subscription
                 </x-nav-link>
             </ul>

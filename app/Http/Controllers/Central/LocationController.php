@@ -24,4 +24,10 @@ class LocationController extends Controller
         $location = $locationService->find($location_id);
         return view('central.location.user.index',compact('location'));
     }
+
+    public function location_user_impersonate($location_id,$user_id,LocationService $locationService)
+    {
+        $url = $locationService->impersonateUserURL($location_id,$user_id);
+        return redirect()->away($url);
+    }
 }

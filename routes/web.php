@@ -34,8 +34,7 @@ Route::group([
     //Gym
     Route::get('/location', [App\Http\Controllers\Central\LocationController::class, 'index'])->name('central.dashboard.location.index');
     Route::get('/location/{location_id}', [App\Http\Controllers\Central\LocationController::class, 'show'])->name('central.dashboard.location.show');
-    Route::get('/location/{location}/{user_id}', [App\Http\Controllers\Central\LocationController::class, 'location_user_delete'])->name('central.dashboard.location.user.delete');
-
+    Route::get('/location/{location_id}/{user_id}/impersonate', [App\Http\Controllers\Central\LocationController::class, 'location_user_impersonate'])->name('central.dashboard.location.user.impersonate');
 });
 
 require __DIR__.'/auth.php';

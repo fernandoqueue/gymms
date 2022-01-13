@@ -27,7 +27,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="table-responsive" style="border-top-left-radius: 5px; border-top-right-radius: 5px; min-height:200px">
+            <div class="table-responsive" style="border-top-left-radius: 5px; border-top-right-radius: 5px; min-height:182px">
                 <table class="table mb-0">
                     <thead style="background-color:cadetblue; color:white">
                         <tr >
@@ -75,8 +75,8 @@
                                         </a>
 
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">View</a>
-                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="">View</a>
+                                            <a class="dropdown-item" href="{{ route('central.dashboard.location.user.impersonate',['location_id' => $location->id, 'user_id' => $user->id]) }}">Impersonate</a>
                                             <a class="dropdown-item" wire:click="confirm('delete', {{ $user->id }})" wire:loading.attr="disabled" href="#">Delete</a>
                                         </div>
                                     </div>
