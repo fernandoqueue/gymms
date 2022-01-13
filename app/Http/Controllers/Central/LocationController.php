@@ -15,19 +15,13 @@ class LocationController extends Controller
      */
     public function index(LocationService $locationService)
     {
-        $locations = $locationService->getAll();
+        $locations = $locationService->getAllWithDomains();
         return view('central.location.index',compact('locations'));
     }
     
-    public function show(Location $location)
+    public function show($location_id, LocationService $locationService)
     {
+        $location = $locationService->find($location_id);
         return view('central.location.user.index',compact('location'));
     }
-
-    public function location_user_delete(Location $location, int $user_id, LocationService $locationService)
-    {
-        $locationService->deleteLocationUser($location,$user_id,);
-        return redirect()->back();
-    }
-
 }
