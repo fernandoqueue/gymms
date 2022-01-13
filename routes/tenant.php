@@ -23,13 +23,19 @@ Route::middleware([
     InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    Route::get('/', function () {
-        return App\Models\User::all();
-    });
 
+    require __DIR__.'/auth.php';
+
+    Route::get('/', [App\Http\Controllers\Location\HomeController::class,'index']);
+
+    Route::middleware(['auth'])->group(function () {
+
+        Route::get('/dashboard', [App\Http\Controllers\Location\DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+        
+    });
     
 
-    Route::get('/dashboard', [App\Http\Controllers\Location\DashboardController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+    
 
     //Fortify
     require __DIR__.'/auth.php';

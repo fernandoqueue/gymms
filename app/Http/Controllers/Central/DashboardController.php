@@ -3,21 +3,19 @@
 namespace App\Http\Controllers\Central;
 
 use App\Http\Controllers\Controller;
-
+use App\Services\LocationService;
+use App\Services\UserService;
+use App\Models\Location;
 class DashboardController extends Controller
 {
     /**
-     * Display the login view.
+     * Display the dashboard view
      *
      * @return \Illuminate\View\View
      */
-    public function dashboard()
+    public function index(LocationService $locationService)
     {
-        echo '<h1>Current Locations</h1>';
-        foreach(\App\Models\Location::all() as $location)
-        {
-            echo $location->id . '<br>';
-        }
+        $locations = $locationService->getAll();
+        return view('central.dashboard.index',compact('locations'));
     }
-
 }
