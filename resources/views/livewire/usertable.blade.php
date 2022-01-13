@@ -53,7 +53,7 @@
                         @forelse($users as $user)
                             <tr style="background-color:white">
                                 <td>
-                                    <input type="checkbox" value="{{ $user->id }}" wire:model="selected">
+                                    <input type="checkbox" value="{{ $user->id }}" wire:model.debounce.0ms="selected">
                                 </td>
                                 <td scope="row">
                                     {{ $user->id }}
@@ -96,10 +96,10 @@
     <div class="row" style="margin-top: .4rem">
         <div class="col-6">
             @if($this->selectedCount)
-                <button class="btn btn-sm btn-success" type="button" wire:click="resetSelected" >
+                <button class="btn btn-sm btn-success text-white" type="button" wire:click="resetSelected" >
                     Deselect All
                 </button>
-                <button class="btn btn-sm btn-danger" type="button" wire:click="confirm('deleteSelected')" >
+                <button class="btn btn-sm btn-danger text-white" type="button" wire:click="confirm('deleteSelected')" >
                     Delete {{ $this->selectedCount }} Selected
                 </button>
             @endif

@@ -63,15 +63,14 @@ class Index extends Component
         $this->perPage           = 10;
         $this->paginationOptions = [10,25,50,100];
         $this->orderable         = ['id','name','email'];
+        $this->columns = ['id','name','email'];
     }
 
-    public function userAdvancedFilter($filters,$paginate)
+    public function userAdvancedFilter($columns,$filters,$paginate)
     {
-        return $this->location->run(function () use ($filters,$paginate){
+        return $this->location->run(function () use ($columns,$filters,$paginate){
            return app()->make(UserService::class)
-                       ->getModel()
-                       ->advancedFilter($filters)
-                       ->paginate($paginate,['id','name','email']);
+                       ->advancedFilterWithPagination($columns, $filters, $paginate);
         });
     }
 
@@ -93,7 +92,7 @@ class Index extends Component
 
     public function render()
     {
-        $users = $this->userAdvancedFilter([
+        $users = $this->userAdvancedFilter($this->columns,[
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
@@ -112,5 +111,5 @@ class Index extends Component
     {
         $this->deleteUser($userId);
     }
-    
+
 }

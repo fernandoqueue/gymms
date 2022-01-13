@@ -25,4 +25,10 @@ class UserService
         return User::whereIn('id',$users)->delete();
     }
 
+    public function advancedFilterWithPagination($columns,$filters,$paginate)
+    {
+        return User::advancedFilter($filters)
+        ->paginate($paginate,$columns);
+    }
+
 }
