@@ -19,9 +19,9 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 */
 
 Route::middleware([
+    'web',
     InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
-    'web'
 ])->group(function () {
 
     Route::get('/', [App\Http\Controllers\Location\HomeController::class,'index']);
