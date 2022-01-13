@@ -27,7 +27,7 @@
 
     <div class="row">
         <div class="col-12">
-            <div class="table-responsive" style="border-top-left-radius: 5px; border-top-right-radius: 5px">
+            <div class="table-responsive" style="border-top-left-radius: 5px; border-top-right-radius: 5px; min-height:200px">
                 <table class="table mb-0">
                     <thead style="background-color:cadetblue; color:white">
                         <tr >
