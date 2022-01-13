@@ -9,7 +9,6 @@ use App\Models\Location;
 return [
     'tenant_model' => Location::class,
     'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
-
     'domain_model' => Domain::class,
 
     /**
@@ -18,9 +17,7 @@ return [
      * Only relevant if you're using the domain or subdomain identification middleware.
      */
     'central_domains' => [
-        '127.0.0.1',
-        'localhost:8080',
-        'localhost'
+        env('CENTRAL_DOMAIN'),
     ],
 
     /**
