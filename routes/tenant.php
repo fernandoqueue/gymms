@@ -19,12 +19,10 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 */
 
 Route::middleware([
-    'web',
     InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
+    'web'
 ])->group(function () {
-
-    require __DIR__.'/auth.php';
 
     Route::get('/', [App\Http\Controllers\Location\HomeController::class,'index']);
 

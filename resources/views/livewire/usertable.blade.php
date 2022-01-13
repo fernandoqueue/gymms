@@ -69,7 +69,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <div style="float:right" class="dropdown">
+                                    <div style="float:right" class="dropstart btn-group">
                                         <a href="#" class="btn btn-sm btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Actions <i class="mdi mdi-chevron-down"></i>
                                         </a>
@@ -106,7 +106,7 @@
         </div>
         <div class="col-6">
             <div style="float: right;">
-                {{ $users->links() }}
+                {{ $users->onEachSide(0)->links() }}
             </div>
         </div>
     </div>
