@@ -106,7 +106,7 @@
         </div>
         <div class="col-6">
             <div style="float: right;">
-                {{ $users->links('page') }}
+                {{ $users->links() }}
             </div>
         </div>
     </div>
