@@ -99,7 +99,6 @@ class Index extends Component
         ], $this->perPage);
 
 
-        dd($users);
 
         return view('livewire.usertable', compact('users'));
     }
