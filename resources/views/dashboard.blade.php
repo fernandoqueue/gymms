@@ -7,7 +7,7 @@
 
     <div class="card my-4">
         <div class="card-body">
-            You're logged in!
+            {{ session('admin_impersonation') }}
         </div>
     </div>
 </x-app-layout>

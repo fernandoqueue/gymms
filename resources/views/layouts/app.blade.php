@@ -18,6 +18,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased bg-light">
+        @include('includes.impersonation-banner')
         @include('layouts.navigation')
 
         <!-- Page Heading -->
