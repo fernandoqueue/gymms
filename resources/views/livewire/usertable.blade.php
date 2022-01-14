@@ -109,7 +109,7 @@
         </div>
         <div class="col-6">
             <div style="float: right;">
-                {{ $users->links('vendor.pagination.simple-defalt') }}
+                {{ $users->links('vendor.pagination.simple-default') }}
             </div>
         </div>
     </div>
