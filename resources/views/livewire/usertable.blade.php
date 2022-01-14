@@ -20,9 +20,6 @@
             </div>
         </div>
     </div>
-
-    
-
     <div class="row">
         <div class="col-12">
             <div class="table-responsive" style="border-top-left-radius: 5px; border-top-right-radius: 5px; min-height:182px">
@@ -47,12 +44,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody wire:loading.delay style="border-top: unset;">
-                        <tr >
-                            <td style="background-color:white; text-align: center;" colspan="10">Loading...</td>
-                        </tr>
-                    </tbody>
-                    <tbody wire:loading.remove style="border-top: unset;" >
+                    <tbody style="border-top: unset;" >
                         @forelse($users as $user)
                             <tr style="background-color:white">
                                 <td>
@@ -109,7 +101,7 @@
         </div>
         <div class="col-6">
             <div style="float: right;">
-                {{ $users->links('vendor.livewire.simple-bootstrap') }}
+                {{ $users->links('livewire.components.simple-pagination') }}
             </div>
         </div>
     </div>
@@ -118,11 +110,11 @@
 
 @push('scripts')
     <script>
-        Livewire.on('confirm', e => {
-    if (!confirm("Are you sure?")) {
-        return
-    }
-@this[e.callback](...e.argv)
-})
+    Livewire.on('confirm', e => {
+        if (!confirm("Are you sure?")) {
+            return
+        }
+        @this[e.callback](...e.argv)
+    })
     </script>
 @endpush

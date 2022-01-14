@@ -13,7 +13,9 @@ use App\Services\UserService;
 class Index extends Component
 {
     use WithPagination;
-    use WithSorting;
+    use WithSorting {
+        sortBy as traitSortBy;
+    }
     use WithConfirmation;
 
     protected $paginationTheme = 'bootstrap';
@@ -23,6 +25,7 @@ class Index extends Component
     public $search = '';
     public $selected = [];
     public $paginationOptions;
+
     protected $queryString = [
         'search' => [
             'except' => '',
@@ -36,16 +39,11 @@ class Index extends Component
     ];
 
     public function getSelectedCountProperty()
-    {
+    {   
         return count($this->selected);
     }
 
     public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingSortBy()
     {
         $this->resetPage();
     }
@@ -60,6 +58,23 @@ class Index extends Component
         $this->selected = [];
     }
 
+    public function deleteSelected()
+    {
+       $this->deleteSelectedUsers($this->selected);
+       $this->resetSelected();
+    }
+
+    public function delete($userId)
+    {
+        $this->deleteUser($userId);
+    }
+
+    public function sortBy($field)
+    {
+        $this->traitSortBy($field);
+        $this->resetPage();
+    }
+
     public function mount(Location $location)
     {
         $this->location;
@@ -70,7 +85,7 @@ class Index extends Component
         $this->orderable         = ['id','name','email'];
         $this->columns = ['id','name','email'];
     }
-
+    //Tenant Actions
     public function userAdvancedFilter($columns,$filters,$paginate)
     {
         return $this->location->run(function () use ($columns,$filters,$paginate){
@@ -94,7 +109,7 @@ class Index extends Component
                         ->deleteSelectedUsers($selectedUsers);
          });
     }
-
+    //Render
     public function render()
     {
         $users = $this->userAdvancedFilter($this->columns,[
@@ -103,20 +118,7 @@ class Index extends Component
             'order_direction' => $this->sortDirection,
         ], $this->perPage);
 
-
-
         return view('livewire.usertable', compact('users'));
-    }
-
-    public function deleteSelected()
-    {
-       $this->deleteSelectedUsers($this->selected);
-       $this->resetSelected();
-    }
-
-    public function delete($userId)
-    {
-        $this->deleteUser($userId);
     }
 
 }
