@@ -96,7 +96,7 @@ class Index extends Component
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
-        ], $this->perPage)->paginate(10);
+        ], $this->perPage);
 
 
 

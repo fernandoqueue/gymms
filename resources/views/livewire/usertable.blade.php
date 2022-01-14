@@ -109,7 +109,7 @@
         </div>
         <div class="col-6">
             <div style="float: right;">
-                {{ $users->links('vendor.pagination.simple-bootstrap-4') }}
+                {{ $users->links('vendor.livewire.simple-bootstrap') }}
             </div>
         </div>
     </div>
