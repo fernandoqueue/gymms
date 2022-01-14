@@ -41,10 +41,10 @@
                 <div class="col-12 col-md-4">
                     <div style="border: 1px solid #00000024;" class="card text-center">
                         <div style="background-color: cadetblue;color: white;" class="card-header">
-                          Subscriptions
+                          Settings
                         </div>
                         <div class="card-body">
-                          <h5 class="card-title"><i style="font-size:8em; color:cadetblue" class="fas fa-users"></i></h5>
+                          <h5 class="card-title"><i style="font-size:8em; color:cadetblue" class="fas fa-gear"></i></h5>
                           <p style="font-weight: 600;font-size: 1rem;" class="card-text">{{ \App\Models\User::all()->count() }} Users</p>
                           <a href="#" style="background-color: cadetblue; color:white" class="btn">Manage</a>
                         </div>

@@ -20,10 +20,10 @@
             </div>
         </div>
     </div>
-{{-- 
+
     <div wire:loading.delay>
         Loading...
-    </div> --}}
+    </div>
 
     <div class="row">
         <div class="col-12">
