@@ -21,9 +21,7 @@
         </div>
     </div>
 
-    <div wire:loading.delay>
-        Loading...
-    </div>
+    
 
     <div class="row">
         <div class="col-12">
@@ -49,7 +47,12 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody style="border-top: unset;" >
+                    <tbody wire:loading.delay style="border-top: unset;">
+                        <tr>
+                            <td style="background-color:white; text-align: center;" colspan="10">Loading...</td>
+                        </tr>
+                    </tbody>
+                    <tbody wire:loading.remove style="border-top: unset;" >
                         @forelse($users as $user)
                             <tr style="background-color:white">
                                 <td>
