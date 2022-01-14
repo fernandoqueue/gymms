@@ -1,4 +1,5 @@
 @if ($paginator->hasPages())
+    <h1>Test</h1>
     <nav>
         <ul class="pagination">
             {{-- Previous Page Link --}}
