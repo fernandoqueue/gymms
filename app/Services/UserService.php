@@ -39,7 +39,7 @@ class UserService
     public function advancedFilterWithPagination($columns,$filters,$paginate)
     {
         return $this->model->advancedFilter($filters)
-                           ->paginate($paginate,$columns);
+                           ->cursorPaginate($paginate,$columns);
     }
 
 }

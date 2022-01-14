@@ -24,7 +24,7 @@ class Domain extends BaseDomain
 
     public function isSubdomain(): bool
     {
-        return ! Str::contains($this->domain, '.');
+        return !Str::contains($this->domain, '.');
     }
 
     public function getTypeAttribute(): string

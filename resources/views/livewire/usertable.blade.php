@@ -1,4 +1,4 @@
-<div style="margin-top: 1rem; ">
+<div style="margin-top: 1rem">
 
     <div class="row" style="">
         <div class="col-6">
@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-12">
             <div class="table-responsive" style="border-top-left-radius: 5px; border-top-right-radius: 5px; min-height:182px">
-                <table class="table mb-0">
+                <table class="table mb-0" style="border: 1px solid #5f9ea099">
                     <thead style="background-color:cadetblue; color:white">
                         <tr >
                             <th >

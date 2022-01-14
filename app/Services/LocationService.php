@@ -23,6 +23,11 @@ class LocationService
         return $this->model->all();
     }
 
+    public function create($attributes)
+    {
+        
+    }
+
     public function find($location_id)
     {
         return $this->model->find($location_id);
