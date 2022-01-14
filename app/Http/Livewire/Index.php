@@ -21,6 +21,7 @@ class Index extends Component
     public $perPage;
     public $orderable;
     public $search = '';
+    public $sortBy;
     public $selected = [];
     public $paginationOptions;
     protected $queryString = [
@@ -44,6 +45,13 @@ class Index extends Component
     {
         $this->resetPage();
     }
+
+    public function updatingSortBy()
+    {
+        $this->resetPage();
+    }
+
+
 
     public function updatingPerPage()
     {
