@@ -8,6 +8,7 @@
                     <span class="page-link">@lang('pagination.previous')</span>
                 </li>
             @else
+                {{ \Log::info($paginator->nextCursor()) }}
                 <li class="page-item">
                     <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a>
                 </li>
