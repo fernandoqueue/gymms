@@ -98,6 +98,9 @@ class Index extends Component
             'order_direction' => $this->sortDirection,
         ], $this->perPage);
 
+
+        dd($users);
+
         return view('livewire.usertable', compact('users'));
     }
 
