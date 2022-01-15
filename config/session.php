@@ -4,6 +4,8 @@ use Illuminate\Support\Str;
 
 return [
 
+    'impersonation_session_key' => 'admin_impersonation',
+
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver
@@ -17,7 +19,7 @@ return [
     |            "memcached", "redis", "dynamodb", "array"
     |
     */
-
+    
     'driver' => env('SESSION_DRIVER', 'file'),
 
     /*

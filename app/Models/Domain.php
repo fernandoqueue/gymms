@@ -5,15 +5,6 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Stancl\Tenancy\Database\Models\Domain as BaseDomain;
 
-/**
- * @property int $id
- * @property int $tenant_id
- * @property string $domain
- * @property bool $is_primary
- * @property bool $is_fallback
- * @property string $certificate_status
- * @property Tenant $tenant
- */
 class Domain extends BaseDomain
 {
     

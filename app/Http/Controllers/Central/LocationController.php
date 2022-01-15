@@ -35,9 +35,10 @@ class LocationController extends Controller
         return view('central.location.create');
     }
 
-    public function store(LocationStoreRequest $request)
-    {
-        return $request->all();
+    public function store(LocationStoreRequest $request, LocationService $locationService)
+    {   
+        $location = $locationService->create($request);
+        return redirect()->route('central.dashboard.location.show', $location);
     }
 
     public function show($location_id, LocationService $locationService)

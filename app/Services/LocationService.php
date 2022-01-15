@@ -14,7 +14,7 @@ class LocationService
     }
 
     public function getAllWithDomains()
-    {
+    {;
         return $this->model->with('domains')->get();
     }
 
@@ -25,7 +25,21 @@ class LocationService
 
     public function create($attributes)
     {
-        
+        $location = $this->model->create([
+            'name' => $attributes->name,
+            'address1' => $attributes->address1,
+            'address2' => $attributes->address2,
+            'city' => $attributes->city,
+            'state' => $attributes->state,
+            'zip' => $attributes->zip,
+        ]);
+
+        $location->domains()->create([
+            'domain' => $attributes->domain,
+        ]);
+
+        return $location;
+
     }
 
     public function find($location_id)
@@ -36,7 +50,7 @@ class LocationService
     public function impersonateUserURL($location_id,$user_id)
     {
         $location = $this->find($location_id);
-        $token = tenancy()->impersonate($location, $user_id, $location->route('tenant.dashboard'), 'web')->token;
+        $token = tenancy()->impersonate($location, $user_id, $location->route('tenant.dashboard.index'), 'web')->token;
         return $location->route('tenant.impersonate.auth.token', ['token' => $token]);
     }
 

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-central.app-layout>
     <x-slot name="header">
         <h2 class="h3 font-weight-bold">
             Location
@@ -38,4 +38,4 @@
               </table>
         </div>
     </div>
-</x-app-layout>
+</x-central.app-layout>

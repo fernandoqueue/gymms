@@ -11,19 +11,6 @@ class Location extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains;
   
-    public static function getCustomColumns(): array
-    {
-        return [
-            'id',
-            'name',
-            'street1',
-            'street2',
-            'city',
-            'state',
-            'zip',
-        ];
-    }
-
     public function route($route, $parameters = [], $absolute = true)
     {
         $domain = $this->domains->first()->domain;

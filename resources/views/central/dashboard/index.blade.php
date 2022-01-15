@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-central.app-layout>
     <x-slot name="header">
         <h2 class="h3 font-weight-bold">
             Dashboard
@@ -53,38 +53,5 @@
             </div>
         </div>
     </div>
-    {{-- <div class="row mt-2">
-        <div class="col-12">
-            <button type="button" class="btn btn-primary float-end">Add New Gym</button>
-        </div>
-    </div>
-    <div class="card my-2">
-        <div class="card-body table-responsive">
-            <table class="table caption-top">
-                <caption>List of Gyms</caption>
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Domain</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($locations as $index => $location)
-                    <tr>
-                      <th scope="row">{{ $index+1 }}</th>
-                      <td>
-                        @foreach ($location['domains'] as $domain)
-                            <span class="badge bg-primary">{{ $domain->domain }}</span>
-                        @endforeach  
-                      </td>
-                      <td>{{ $location['id'] }}</td>
-                      <td><a href="{{ route('central.dashboard',[$location['id']]) }}">Manage Location</a></td>
-                    </tr>  
-                  @endforeach
-                </tbody>
-              </table>
-        </div>
-    </div> --}}
-</x-app-layout>
+    
+</x-central.app-layout>

@@ -13,38 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test',function(){
-        
-    $arr = [
-        'information' =>[
-            'name' => 'Champions of West Covina',
-            'street1' => '8175 E Kaiser Blvd',
-            'street2' => null,
-            'city' => 'Anaheim Hills',
-            'state' => 'La Puente',
-            'zip' => '91744'
-        ]
-    ];
-
-    $locationModel= new \App\Models\Location;
-
-    //return $locationModel->find('a9b6f699-9b9b-4bd5-8be5-571ec08103a9')->information['zip'];
-
-    return $locationModel->create([
-        'plan' => true,
-        'information' =>[
-        'name' => 'Champions of West Covina',
-        'street1' => '8175 E Kaiser Blvd',
-        'street2' => null,
-        'city' => 'Anaheim Hills',
-        'state' => 'La Puente',
-        'zip' => '91744'
-    ]]);
-});
+Route::get('/', [App\Http\Controllers\Central\HomeController::class, 'index'] );
 
 Route::group([
     'prefix' => 'dashboard',
@@ -62,4 +31,6 @@ Route::group([
     Route::get('/location/{location_id}/{user_id}/impersonate', [App\Http\Controllers\Central\LocationController::class, 'location_user_impersonate'])->name('central.dashboard.location.user.impersonate');
 });
 
-require __DIR__.'/auth.php';
+Route::name('central.')->group(function(){
+    require __DIR__.'/auth.php';
+});

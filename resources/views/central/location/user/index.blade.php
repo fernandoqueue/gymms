@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-central.app-layout>
     <x-slot name="header">
         <h2 class="h3 font-weight-bold">
             Location: {{ $location->id }}
@@ -10,5 +10,5 @@
           <a style="background-color: cadetblue; color:white" type="button" class="btn float-end">Add New User</a>
         </div>
     </div>
-    @livewire('index', ['location' => $location])
-</x-app-layout>
+    @livewire('central.user-table', ['location' => $location])
+</x-central.app-layout>

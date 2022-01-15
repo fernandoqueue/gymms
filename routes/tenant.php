@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
-use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
-use Stancl\Tenancy\Features\UserImpersonation;
+use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;;
 use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
@@ -25,30 +24,20 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
 
-    Route::get('/', [App\Http\Controllers\Location\HomeController::class,'index']);
+    Route::get('/', [App\Http\Controllers\Tenant\HomeController::class,'index']);
     
-    Route::get('/impersonate/login/{token}', function ($token) {
-        session(['admin_impersonation' => true]);
-        return UserImpersonation::makeResponse($token);
-    })->name('tenant.impersonate.auth.token');
-    
-    Route::get('/impersonation/destroy', function(Request $request){
-
-        abort_if(!$request->session()->get('admin_impersonation'), 403);
-
-        $currentLocationID = tenancy()->tenant->id;
-        Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect(route('central.dashboard.location.show', $currentLocationID));
-        
-    })->name('tenant.impersonate.auth.destroy')->middleware('auth');
+    Route::get('/impersonate/login/{token}', [App\Http\Controllers\Tenant\ImpersonateController::class,'loginImpersonation'])->name('tenant.impersonate.auth.token');
 
     Route::middleware(['auth'])->group(function () {
-
-        Route::get('/dashboard', [App\Http\Controllers\Location\DashboardController::class, 'dashboard'])->middleware(['auth'])->name('tenant.dashboard');
+        //Dashboard
+        Route::get('/dashboard', [App\Http\Controllers\Tenant\DashboardController::class, 'dashboard'])->middleware(['auth'])->name('tenant.dashboard.index');
+        //Impersonation logout
+        Route::get('/impersonation/destroy', [App\Http\Controllers\Tenant\ImpersonateController::class, 'logoutImpersonation'])->name('tenant.impersonate.auth.destroy');
         
     });
     
-    require __DIR__.'/auth.php';
+    Route::name('tenant.')->group(function () {
+        require __DIR__.'/tenant-auth.php';
+    });
+    
 });
