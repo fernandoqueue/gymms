@@ -30,11 +30,11 @@
             <p class="card-text text-muted">Enter gym details below</p>
             <div class="row g-3 mb-4">
               <div class="col-12">
-                <label for="inputEmail4" class="form-label">Name</label>
+                <label for="inputEmail4" class="form-label">Business Name</label>
                 <input name="name" type="name" class="form-control" id="inputEmail4" placeholder="Name">
               </div>
               <div class="col-12">
-                <label for="inputAddress" class="form-label">Address</label>
+                <label for="inputAddress" class="form-label">Business Address</label>
                 <input name="address1" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
               </div>
               <div class="col-12">

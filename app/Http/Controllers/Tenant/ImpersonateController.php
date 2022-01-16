@@ -20,12 +20,14 @@ class ImpersonateController extends Controller
     }
     public function logoutImpersonation(Request $request, ImpersonationService $impersonationService)
     {   
+        
         abort_if( 
             !$request->session()->get($this->impersonation_session_key), 
             403 
         );
-        
-        $currentLocationID = $impersonationService->logoutImpersonationSession($request);
+
+        $currentLocationID = tenancy()->tenant->id;
+        $impersonationService->logoutImpersonationSession($request);
         return redirect(route('central.dashboard.location.show', $currentLocationID));
     }
 }

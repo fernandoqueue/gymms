@@ -15,7 +15,7 @@ class DashboardController extends Controller
      */
     public function index(LocationService $locationService)
     {
-        $locations = $locationService->getAll();
-        return view('central.dashboard.index',compact('locations'));
+        $locationCount = $locationService->getAll()->count();
+        return view('central.dashboard.index',compact('locationCount'));
     }
 }

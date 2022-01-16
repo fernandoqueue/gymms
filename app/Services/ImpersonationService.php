@@ -15,11 +15,9 @@ class ImpersonationService
 
     public function logoutImpersonationSession($request)
     {
-        $currentLocationID = tenancy()->tenant->id;
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return $currentLocationID;
     }
 
 }

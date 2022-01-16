@@ -21,7 +21,7 @@
                         </div>
                         <div class="card-body">
                           <h5 class="card-title"><i style="font-size:8em; color:cadetblue" class="fas fa-dumbbell"></i></h5>
-                          <p style="font-weight: 600;font-size: 1rem;" class="card-text">{{ \App\Models\Location::all()->count() }} Gyms</p>
+                          <p style="font-weight: 600;font-size: 1rem;" class="card-text">{{ $locationCount }} Gyms</p>
                           <a href="{{ route('central.dashboard.location.index') }}" style="background-color: cadetblue; color:white" class="btn">Manage</a>
                         </div>
                       </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="card-body">
                           <h5 class="card-title"><i style="font-size:8em; color:cadetblue" class="fas fa-users"></i></h5>
-                          <p style="font-weight: 600;font-size: 1rem;" class="card-text">{{ \App\Models\User::all()->count() }} Users</p>
+                          <p style="font-weight: 600;font-size: 1rem;" class="card-text">{{ \App\Models\Admin::all()->count() }} Admin(s)</p>
                           <a href="#" style="background-color: cadetblue; color:white" class="btn">Manage</a>
                         </div>
                       </div>

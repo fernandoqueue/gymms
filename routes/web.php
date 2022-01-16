@@ -17,7 +17,7 @@ Route::get('/', [App\Http\Controllers\Central\HomeController::class, 'index'] );
 
 Route::group([
     'prefix' => 'dashboard',
-    'middleware' => ['auth'],
+    'middleware' => ['auth:admin'],
     ],function () {
 
     //Dashbaord

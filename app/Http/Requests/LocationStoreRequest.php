@@ -24,7 +24,7 @@ class LocationStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'domain' => ['string','required'],
+            'domain' => ['string','required','unique:domains,domain'],
             'name' => ['string', 'required'],
             'address1' => ['string', 'required'],
             'address2' => ['nullable'],
