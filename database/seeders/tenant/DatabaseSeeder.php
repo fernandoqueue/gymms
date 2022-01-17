@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\Tenant\PermissionsTableSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
