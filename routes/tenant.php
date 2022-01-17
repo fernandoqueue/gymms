@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 
 Route::middleware([
     'web',
+    'auth.gates',
     InitializeTenancyByDomainOrSubdomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {

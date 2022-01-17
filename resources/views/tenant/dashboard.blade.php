@@ -7,7 +7,9 @@
 
     <div class="card my-4">
         <div class="card-body">
-            <h1>Hello from tenant dashboard</h1>
+            @can('dashboard_view')
+            <h1>Auth Gates</h1>
+            @endcan
         </div>
     </div>
 </x-tenant.app-layout>
