@@ -7,7 +7,6 @@
 
     <div class="card my-4">
         <div class="card-body">
-            {{ session('admin_impersonation') }}
             <h1>Hello from tenant dashboard</h1>
         </div>
     </div>

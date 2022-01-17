@@ -1,23 +1,25 @@
 <?php
 namespace App\Services;
 
-use Stancl\Tenancy\Features\UserImpersonation;
+use App\Support\UserImpersonation;
 use Auth;
 
 class ImpersonationService
 {
-    public function authenticateImpersonationToken($token, $sessionKey)
+    private $impersonationSupport;
+
+    public function __construct()
     {
-        $response = UserImpersonation::makeResponse($token);
-        session([ $sessionKey => true ]);
-        return $response;
+        $this->impersonationSupport = new UserImpersonation;
+    }
+    public function authenticateImpersonationToken($sessionKey, $token)
+    {
+        return  $this->impersonationSupport->makeLoginResponse($sessionKey, $token);
     }
 
     public function logoutImpersonationSession($request)
     {
-        Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        return $this->impersonationSupport->makeLogoutResponse($request);
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Tenant;
 use Illuminate\Http\Request;
 use App\Services\ImpersonationService;
 use App\Http\Controllers\Controller;
+
 class ImpersonateController extends Controller
 {
     private $impersonation_session_key;
@@ -16,18 +17,10 @@ class ImpersonateController extends Controller
 
     public function loginImpersonation($token, ImpersonationService $impersonationService)
     {
-        return $impersonationService->authenticateImpersonationToken($token, $this->impersonation_session_key);
+        return $impersonationService->authenticateImpersonationToken($this->impersonation_session_key, $token);
     }
     public function logoutImpersonation(Request $request, ImpersonationService $impersonationService)
     {   
-        
-        abort_if( 
-            !$request->session()->get($this->impersonation_session_key), 
-            403 
-        );
-
-        $currentLocationID = tenancy()->tenant->id;
-        $impersonationService->logoutImpersonationSession($request);
-        return redirect(route('central.dashboard.location.show', $currentLocationID));
+        return $impersonationService->logoutImpersonationSession($request);
     }
 }
