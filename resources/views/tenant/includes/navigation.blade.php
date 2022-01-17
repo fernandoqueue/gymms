@@ -4,6 +4,9 @@
         <a class="navbar-brand" href="/">
             <x-tenant.application-logo width="36" />
         </a>
+        @if(currentlyImpersonating())
+        <a href="{{ route('tenant.impersonate.auth.destroy') }}" class="btn btn-sm btn-danger text-white">Impersonation Logout</a>
+        @endif
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,9 +14,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                @if(currentlyImpersonating())
-                <a href="{{ route('tenant.impersonate.auth.destroy') }}" class="btn btn-sm btn-danger text-white">Impersonation Logout</a>
-                @endif
                 <x-tenant.nav-link href="{{ route('tenant.dashboard.index') }}" :active="request()->routeIs('tenant.dashboard')">
                     {{ __('Dashboard') }}
                 </x-tenant.nav-link>
