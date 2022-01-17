@@ -190,8 +190,7 @@ return [
      * Parameters used by the tenants:seed command.
      */
     'seeder_parameters' => [
-        '--class' => 'Tenant\DatabaseSeeder', // root seeder class
-        // '--realpath' => true,
-         '--force' => true,
+        '--class' => 'DatabaseSeeder', // root seeder class
+        '--force' => true,
     ],
 ];
