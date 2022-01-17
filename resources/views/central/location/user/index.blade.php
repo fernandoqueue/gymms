@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-12">
           <h4 style="display:inline-block">Manage Location Users</h4>
-          <a style="background-color: cadetblue; color:white" type="button" class="btn float-end">Add New User</a>
+          <a style="background-color: #5f9ea0; color:white" type="button" class="btn float-end">Add New User</a>
         </div>
     </div>
     @livewire('central.user-table', ['location' => $location])
