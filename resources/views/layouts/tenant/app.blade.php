@@ -17,8 +17,8 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-light">
-        @include('tenant.includes.impersonation-banner')
+    <body class="font-sans antialiased bg-light" style="{{ session()->has( config('session.impersonation_session_key') ) ? 'border: 4px solid red; height: 100vh' : '' }}">
+
         @include('tenant.includes.navigation')
 
         <!-- Page Heading -->
