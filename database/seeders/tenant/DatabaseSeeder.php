@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Database\Seeders\Tenant\PermissionsTableSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            Database\Seeders\Tenant\PermissionsTableSeeder::class,
+            PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             PermissionRoleTableSeeder::class,
             UsersTableSeeder::class,
