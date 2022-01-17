@@ -192,6 +192,6 @@ return [
     'seeder_parameters' => [
         '--class' => 'Database\Seeders\Tenant\DatabaseSeeder', // root seeder class
         // '--realpath' => true,
-        // '--force' => true,
+         '--force' => true,
     ],
 ];
