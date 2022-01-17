@@ -29,7 +29,7 @@
             <ul class="navbar-nav">
 
                 <!-- Settings Dropdown -->
-                @auth
+                @auth('admin')
                     <x-central.dropdown id="settingsDropdown">
                         <x-slot name="trigger">
                             {{ Auth::user()->name }}
