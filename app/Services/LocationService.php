@@ -14,7 +14,7 @@ class LocationService
     }
 
     public function getAllWithDomains()
-    {;
+    {
         return $this->model->with('domains')->get();
     }
 
