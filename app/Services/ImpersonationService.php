@@ -12,9 +12,9 @@ class ImpersonationService
     {
         $this->impersonationSupport = new UserImpersonation;
     }
-    public function authenticateImpersonationToken($sessionKey, $token)
+    public function authenticateImpersonationToken($token)
     {
-        return  $this->impersonationSupport->makeLoginResponse($sessionKey, $token);
+        return  $this->impersonationSupport->makeLoginResponse($token);
     }
 
     public function logoutImpersonationSession($request)

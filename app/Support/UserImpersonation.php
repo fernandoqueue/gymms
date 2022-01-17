@@ -17,7 +17,7 @@ class UserImpersonation extends baseImpersonation
         $this->impersonation_session_key = config('session.impersonation_session_key');
     }
 
-    public function makeLoginResponse($sessionKey, $token, int $ttl = 60)
+    public function makeLoginResponse($token, int $ttl = 60)
     {
         $token = ImpersonationToken::findOrFail($token);
         $ttl = $ttl ?? static::$ttl;
