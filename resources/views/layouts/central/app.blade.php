@@ -17,7 +17,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-light">
+    <body class="font-sans antialiased bg-light" style="border: 4px solid red; height: 100vh">
         @include('central.includes.navigation')
 
         <!-- Page Heading -->
