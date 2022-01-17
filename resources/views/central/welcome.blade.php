@@ -26,7 +26,7 @@
             <div class="d-flex justify-content-end">
                 @if (Route::has('central.login'))
                     <div class="">
-                        @auth
+                        @auth('admin')
                             <a href="{{ url('/dashboard') }}" class="text-muted">Dashboard</a>
                         @else
                             <a href="{{ route('central.login') }}" class="text-muted">Log in</a>

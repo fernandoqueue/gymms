@@ -29,7 +29,6 @@
             <ul class="navbar-nav">
 
                 <!-- Settings Dropdown -->
-                @auth('admin')
                     <x-central.dropdown id="settingsDropdown">
                         <x-slot name="trigger">
                             {{ Auth::user()->name }}
@@ -48,7 +47,6 @@
                             </form>
                         </x-slot>
                     </x-central.dropdown>
-                @endauth
             </ul>
         </div>
     </div>
