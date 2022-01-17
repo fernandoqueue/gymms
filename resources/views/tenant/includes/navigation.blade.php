@@ -11,6 +11,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
+                @if(currentlyImpersonating())
+                <a href="{{ route('tenant.impersonate.auth.destroy') }}" class="btn btn-sm btn-danger text-white">Impersonation Logout</a>
+                @endif
                 <x-tenant.nav-link href="{{ route('tenant.dashboard.index') }}" :active="request()->routeIs('tenant.dashboard')">
                     {{ __('Dashboard') }}
                 </x-tenant.nav-link>

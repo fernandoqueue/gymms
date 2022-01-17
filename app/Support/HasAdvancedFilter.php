@@ -8,16 +8,12 @@ trait HasAdvancedFilter
 {
     public function scopeAdvancedFilter($query, $data)
     {
-        \Log::info('from scopeAdvancedFilter');
-        \Log::info($data);
         return $this->processQuery($query, $data);
     }
 
     public function processQuery($query, $data)
     {
         $data = $this->processGlobalSearch($data);
-        \Log::info('from processQuery');
-        \Log::info($data);
 
         $v = validator()->make($data, [
             's'               => 'sometimes|nullable|string',
