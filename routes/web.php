@@ -18,7 +18,7 @@ Route::get('/', [App\Http\Controllers\Central\HomeController::class, 'index'] );
 Route::group([
     'prefix' => 'dashboard',
     'middleware' => [
-        'web',
+        'central',
         'auth:admin',
     ],
     ],function () {
