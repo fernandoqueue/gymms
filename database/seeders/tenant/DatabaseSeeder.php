@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
             ],
         ];
         Role::insert($roles);
-        
+
         //PermissionsRoles
         $admin_permissions = Permission::all();
         Role::findOrFail(1)->permissions()->sync($admin_permissions->pluck('id'));
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
 
 
         //Other
-        User::factory(10)->create();
+        User::factory(500)->create();
 
 
 
