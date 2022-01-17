@@ -47,6 +47,7 @@ class UserImpersonation extends baseImpersonation
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        
         return redirect(route('central.dashboard.location.show', $currentLocationID));
     }
 }
