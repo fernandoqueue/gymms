@@ -1,8 +1,7 @@
 <?php
 namespace App\Services;
-use App\Models\Location;
-use App\Models\User;
-use App\Services\UserService;
+use App\Models\Central\Location;
+
 class LocationService
 {
 

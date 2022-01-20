@@ -6,19 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LocationStoreRequest;
 use App\Services\LocationService;
-use App\Services\UserService;
-use App\Models\Location;
+
 class LocationController extends Controller
 {
 
-    public static function getCustomColumns(): array
-    {
-        return [
-            'id',
-            'name',
-            'address',
-        ];
-    }
+    // public static function getCustomColumns(): array
+    // {
+    //     return [
+    //         'id',
+    //         'name',
+    //         'address',
+    //     ];
+    // }
     /**
      * Display the login view.
      *
@@ -30,7 +29,7 @@ class LocationController extends Controller
         return view('central.location.index',compact('locations'));
     }
     
-    public function create()
+    public function create(Request $request)
     {
         return view('central.location.create');
     }

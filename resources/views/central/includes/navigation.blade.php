@@ -17,7 +17,7 @@
                 <x-central.nav-link href="{{ route('central.dashboard.location.index') }}" :active="request()->routeIs('central.dashboard.location.index')">
                     Gym
                 </x-central.nav-link>
-                <x-central.nav-link href="" :active="request()->routeIs('central.dashboard')">
+                <x-central.nav-link href="{{ route('central.dashboard.admin.index') }}" :active="request()->routeIs('central.dashboard.admin.index')">
                     Admin
                 </x-central.nav-link>
                 <x-central.nav-link href="" :active="request()->routeIs('central.dashboard')">

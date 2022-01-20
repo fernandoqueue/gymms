@@ -69,14 +69,7 @@ class DatabaseSeeder extends Seeder
         //Other
         User::factory(500)->create();
 
-
-
-
-
-
-
-
-
-
     }
+
+    
 }

@@ -5,12 +5,12 @@ use App\Http\Livewire\Traits\WithConfirmation;
 use App\Http\Livewire\Traits\WithSorting;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Response;
-use App\Services\UserService;
+use App\Services\AdminService;
 use Livewire\WithPagination;
 use Livewire\Component;
-use App\Models\Central\Location;
+use App\Models\Central\Admin;
 
-class UserTable extends Component
+class AdminTable extends Component
 {
     use WithConfirmation;
     use WithPagination;
@@ -72,9 +72,9 @@ class UserTable extends Component
        $this->resetSelected();
     }
 
-    public function delete($userId)
+    public function delete($adminId)
     {
-        $this->deleteUser($userId);
+        $this->deleteUser($adminId);
     }
 
     public function sortBy($field)
@@ -83,9 +83,8 @@ class UserTable extends Component
         $this->resetPage();
     }
 
-    public function mount(Location $location)
+    public function mount()
     {
-        $this->location;
         $this->sortBy            = 'id';
         $this->sortDirection     = 'asc';
         $this->perPage           = 10;
@@ -94,39 +93,37 @@ class UserTable extends Component
         $this->columns = ['id','name','email'];
     }
    
-    public function userAdvancedFilter($columns,$filters,$paginate)
+    public function adminAdvancedFilter($columns,$filters,$paginate)
     {
-        return $this->location->run(function () use ($columns,$filters,$paginate){
-           return app()->make(UserService::class)
-                       ->advancedFilterWithPagination($columns, $filters, $paginate);
-        });
+        return app()->make(AdminService::class)
+                    ->advancedFilterWithPagination($columns, $filters, $paginate);
     }
 
-    public function deleteUser($userId)
+    public function deleteAdmin($adminId)
     {
-        return $this->location->run(function () use ($userId){
-            return app()->make(UserService::class)
-                        ->deleteUser($userId);
-         });
+        // return $this->location->run(function () use ($userId){
+        //     return app()->make(UserService::class)
+        //                 ->deleteUser($userId);
+        //  });
     }
 
-    public function deleteSelectedUsers($selectedUsers)
+    public function deleteSelectedAdmins($selectedAdmins)
     {
-        return $this->location->run(function () use ($selectedUsers){
-            return app()->make(UserService::class)
-                        ->deleteSelectedUsers($selectedUsers);
-         });
+        // return $this->location->run(function () use ($selectedUsers){
+        //     return app()->make(UserService::class)
+        //                 ->deleteSelectedUsers($selectedUsers);
+        //  });
     }
     
     public function render()
     {
-        $users = $this->userAdvancedFilter($this->columns,[
+        $admins = $this->adminAdvancedFilter($this->columns,[
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ], $this->perPage);
 
-        return view('livewire.central.user-table', compact('users'));
+        return view('livewire.central.admin-table', compact('admins'));
     }
 
 }

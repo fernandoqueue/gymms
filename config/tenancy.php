@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Models\Location;
-use App\Models\Domain;
+use App\Models\Central\Location;
+use App\Models\Central\Domain;
 
 return [
     'tenant_model' => Location::class,

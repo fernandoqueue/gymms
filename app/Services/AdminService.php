@@ -1,13 +1,13 @@
 <?php
 namespace App\Services;
-use App\Models\User;
-class UserService
+use App\Models\Central\Admin;
+class AdminService
 {
     private $model;
 
     public function __construct()
     {
-        $this->model = new User;
+        $this->model = new Admin;
     }
 
     public function getAll()
@@ -20,19 +20,19 @@ class UserService
         return $this->model;
     }
 
-    public function find($user_id)
+    public function find($admin_id)
     {
-        return $this->model->find($user_id);
+        return $this->model->find($admin_id);
     }
 
-    public function deleteUser($user_id)
+    public function deleteUser($admin_id)
     {
-        return $this->find($user_id)->delete();
+        return $this->find($admin_id)->delete();
     }
 
-    public function deleteSelectedUsers($users)
+    public function deleteSelectedadmins($admins)
     {
-        return $this->model->whereIn('id',$users)->delete();
+        return $this->model->whereIn('id',$admins)->delete();
     }
 
     public function advancedFilterWithPagination($columns,$filters,$paginate)

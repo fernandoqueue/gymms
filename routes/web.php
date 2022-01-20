@@ -26,6 +26,8 @@ Route::group([
     //Dashbaord
     Route::get('/', [App\Http\Controllers\Central\DashboardController::class, 'index'])->name('central.dashboard.index');
 
+    Route::get('/admin',[App\Http\Controllers\Central\AdminController::class,'index'])->name('central.dashboard.admin.index');
+
     //Gym
     Route::get('/location', [App\Http\Controllers\Central\LocationController::class, 'index'])->name('central.dashboard.location.index');
     Route::get('location/create', [App\Http\Controllers\Central\LocationController::Class, 'create'])->name('central.dashboard.location.create');

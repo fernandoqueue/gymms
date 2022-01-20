@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Central;
 
 use Illuminate\Support\Str;
 use Stancl\Tenancy\Database\Models\Domain as BaseDomain;
