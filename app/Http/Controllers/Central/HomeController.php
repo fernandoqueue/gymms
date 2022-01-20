@@ -41,8 +41,8 @@ class HomeController extends Controller
                 'end' => '2022-11-18 21:15:00'
             ],
             [
-                'start' => '2022-11-18 21:30:00',
-                'end' => '2022-11-18 22:45:00'
+                'start' => '2022-11-18 21:15:00',
+                'end' => '2022-11-18 22:30:00'
             ],
         ];
         $availableSlots = [];

@@ -57,18 +57,32 @@
                         2) 7:00 PM - 11:00PM
                     </div>
                 </div>
+                <div class="me-5">
+                    <div>
+                        <u>Appointments</u>
+                    </div>
+
+                    <div>
+                        1) 09:30 AM - 09:45 AM
+                    </div>
+
+                    <div>
+                        2) 10:00 AM - 10:30 AM
+                    </div>
+                    
+                    <div>
+                        3) 10:30 AM - 11:15 AM
+                    </div>
+
+                    <div>
+                        4) 08:30 PM - 09:15 PM
+                    </div>
+                    <div>
+                        5) 09:30 PM - 10:45 PM
+                    </div>
+                </div>
                 <div>
-                    <div>
-                        <u>Time Block :</u>
-                    </div>
-
-                    <div>
-                        1) 9:00 AM- 5:00 PM
-                    </div>
-
-                    <div>
-                        2) 7:00 PM - 11:00PM
-                    </div>
+                    Service Time: 30Minutes
                 </div>
             </div>
             <div class="col-12">

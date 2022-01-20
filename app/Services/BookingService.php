@@ -8,7 +8,7 @@ class BookingService
 {
     private $serviceTimeIntervals;
     private $timeSlotIntervals;
-    public function __construct($serviceTimeIntervals = 1,$timeSlotsIntervals = 30)
+    public function __construct($serviceTimeIntervals = 30,$timeSlotsIntervals = 30)
     {
         $this->timeSlotIntervals = CarbonInterval::minutes($timeSlotsIntervals);
         $this->serviceTimeIntervals = CarbonInterval::minutes($serviceTimeIntervals);
