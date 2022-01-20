@@ -12,6 +12,15 @@ class HomeController extends Controller
 {
     public function index()
     {
+        /*
+        / 1) Get Scheduled Timeblock for the day.
+        / 2) Get all booked appointments
+        / 3) Get time needed for service(example haircut 1 hour)
+        / 4) 
+        /
+        /
+        /
+        */
         //Foreach timeblock do below. Get timeblocks in array and loop through
         $schedule = [
             'start' => '2022-11-18 09:00:00',
@@ -32,10 +41,10 @@ class HomeController extends Controller
             ],
         ];
 
-        echo 'Time Block: ' . 'From: <b>09:00:00 to 17:00:00</b> <br> ';
+        echo 'Time Block: ' . 'From: <b>09:00 AM to 5:00 PM</b> <br> ';
         echo 'Schedule Appointments:<br>';
-        echo '1) <b>10:00:00 - 12:00:00</b> <br>';
-        echo '2) <b>14:00:00 - 15:30:00</b> <br><br>';
+        echo '1) <b>10:00 AM - 12:00 PM</b> <br>';
+        echo '2) <b>02:00 PM - 3:30 PM</b> <br><br>';
         echo '<u style="padding-bottom:5px">Available Times(30 min intervals)</u><br>';
 
         $minSlotHours = 0;
@@ -51,7 +60,7 @@ class HomeController extends Controller
             $to = $slot->copy()->add($reqInterval);
 
             // $stringResults = $slot->toDateTimeString() . ' to ' . $to->toDateTimeString();
-            $stringResults = $slot->format('H:i');
+            $stringResults = $slot->format('g:i A');
             if($this->slotAvailable($slot, $to, $events)){
                 $results[] = $stringResults;
             }
