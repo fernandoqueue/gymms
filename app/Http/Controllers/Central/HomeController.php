@@ -44,27 +44,6 @@ class HomeController extends Controller
        $availableSlots = app()->make(BookingService::class)
                               ->getAvailableTimeSlots();
 
-        // $availableSlots = collect($schedules)
-        //                     ->map(function($schedule,$key) use ($events){
-        //                         return app()->make(BookingService::class)
-        //                                     ->getAvailableTimeSlots($schedule,$events);
-        //                                 })
-        //                     ->flatten();
-
-        // $availableSlots = [];
-        // foreach($schedules as $schedule){
-
-        //     $timeSlots = app()->make(BookingService::class,[
-        //                             'serviceTimeIntervals'=>90,
-        //                             'timeSlotsIntervals'=>30,
-        //                             ])
-        //                       ->getAvailableTimeSlots($schedule,$events)
-        //                       ->array();
-        //     foreach($timeSlots as $slot)
-        //     {
-        //         $availableSlots[] = $slot;
-        //     }
-        // }
         return view('central.welcome',compact('availableSlots','events'));
     }
 }
