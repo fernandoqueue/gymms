@@ -12,39 +12,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.js"></script>
     <style>
         body {
             font-family: 'Nunito';
             background: #f7fafc;
         }
+        #calendar-container{
+        width: 100%;
+    }
+    #calendar{
+        padding: 10px;
+        width: 100%;
+        height: 550px;
+        border:2px solid black;
+    }
     </style>
+    
 </head>
 <body>
-    <div class="container-fluid fixed-top p-4">
-        <div class="col-12">
-            <div class="d-flex justify-content-end">
-                @if (Route::has('central.login'))
-                    <div class="">
-                        @auth('admin')
-                            <a href="{{ url('/dashboard') }}" class="text-muted">Dashboard</a>
-                        @else
-                            <a href="{{ route('central.login') }}" class="text-muted">Log in</a>
-
-                            @if (Route::has('central.register'))
-                                <a href="{{ route('central.register') }}" class="ms-4 text-muted">Register</a>
-                            @endif
-                        @endif
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid my-5 pt-5 px-5">
+    <div class="my-5 pt-5">
         <div class="row">
-            <div class="col-12 d-flex">
-                <div class="me-5">
+            <div class="col-12">
+                <div class="d-flex flex-column">
                     <div>
                         <u>Time Block :</u>
                     </div>
@@ -57,34 +48,13 @@
                         2) 7:00 PM - 11:00PM
                     </div>
                 </div>
-                <div class="me-5">
-                    <div>
-                        <u>Appointments</u>
-                    </div>
-
-                    <div>
-                        1) 09:30 AM - 09:45 AM
-                    </div>
-
-                    <div>
-                        2) 10:00 AM - 10:30 AM
-                    </div>
-                    
-                    <div>
-                        3) 10:30 AM - 11:15 AM
-                    </div>
-
-                    <div>
-                        4) 08:30 PM - 09:15 PM
-                    </div>
-                    <div>
-                        5) 09:30 PM - 10:45 PM
-                    </div>
-                </div>
                 <div>
                     Service Time: 30Minutes
                 </div>
             </div>
+            <div class="col-12 pt-2">
+                <div id="calendar"></div>    
+            </div>            
             <div class="col-12">
                 <div class="d-flex justify-content-center flex-column align-items-center">
                     @foreach($availableSlots as $availableSlot)
@@ -98,5 +68,15 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'listWeek',
+          events: @json($events)
+        });
+        calendar.render();
+      });
+    </script>
 </body>
 </html>
