@@ -52,7 +52,7 @@
                     Service Time: 30Minutes
                 </div>
             </div>
-            <div class="col-12 pt-2">
+            <div class="col-12 pt-2 mx-2">
                 <div id="calendar"></div>    
             </div>            
             <div class="col-12">
@@ -60,7 +60,7 @@
                     @foreach($availableSlots as $availableSlot)
                     <div style="margin-top:1.5rem">
                         <span style="background-color:green;padding:10px;border-radius:30px">
-                            {{ $availableSlot }}
+                            {{ $availableSlot->format('g:i A') }}
                         </span>
                     </div>
                     @endforeach

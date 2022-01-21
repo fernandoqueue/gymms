@@ -12,17 +12,7 @@ use App\Services\BookingService;
 class HomeController extends Controller
 {
     public function index()
-    {
-        $schedules = [
-            [
-                'start' => '2022-01-18 09:00:00',
-                'end' => '2022-01-18 17:00:00',
-            ],
-            [
-                'start' => '2022-01-18 19:00:00',
-                'end' => '2022-01-18 23:00:00',
-            ]   
-        ];
+    {   
         $events = [
             [
                 'title' => 'Fernando - Haircut',
@@ -50,13 +40,31 @@ class HomeController extends Controller
                 'end' => '2022-01-18 22:30:00'
             ],
         ];
-        $availableSlots = [];
-        foreach($schedules as $schedule){
-            foreach(app()->make(BookingService::class)->getAvailableTimeSlots($schedule,$events) as $slot)
-            {
-                $availableSlots[] = $slot;
-            }
-        }
+
+       $availableSlots = app()->make(BookingService::class)
+                              ->getAvailableTimeSlots();
+
+        // $availableSlots = collect($schedules)
+        //                     ->map(function($schedule,$key) use ($events){
+        //                         return app()->make(BookingService::class)
+        //                                     ->getAvailableTimeSlots($schedule,$events);
+        //                                 })
+        //                     ->flatten();
+
+        // $availableSlots = [];
+        // foreach($schedules as $schedule){
+
+        //     $timeSlots = app()->make(BookingService::class,[
+        //                             'serviceTimeIntervals'=>90,
+        //                             'timeSlotsIntervals'=>30,
+        //                             ])
+        //                       ->getAvailableTimeSlots($schedule,$events)
+        //                       ->array();
+        //     foreach($timeSlots as $slot)
+        //     {
+        //         $availableSlots[] = $slot;
+        //     }
+        // }
         return view('central.welcome',compact('availableSlots','events'));
     }
 }
