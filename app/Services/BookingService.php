@@ -23,7 +23,9 @@ class BookingService
     public function getAvailableTimeSlots()
     {
         return collect($this->schedules)
-                ->map(fn($schedule) => $this->getTimeSlotsForSchedule($schedule))
+                ->map(
+                    fn($schedule) => $this->getTimeSlotsForSchedule($schedule)
+                    )
                 ->flatten();
     }
 
@@ -32,11 +34,14 @@ class BookingService
 
         $availableSlots = [];
 
-        $timeSlots = CarbonPeriod::create($schedule['start'],$this->timeSlotIntervals,$schedule['end'])->excludeEndDate();
+        $timeSlots = CarbonPeriod::create($schedule['start'], $this->timeSlotIntervals, $schedule['end'])
+                                 ->excludeEndDate();
 
         foreach($timeSlots as $timeSlot)
         {
-            $endTimeSlot = $timeSlot->copy()->add($this->serviceTimeIntervals); 
+            $endTimeSlot = $timeSlot->copy()
+                                    ->add($this->serviceTimeIntervals); 
+
             if($this->checkSlotAvailibility($timeSlot,$endTimeSlot,$this->events)) // Check available time slots
             {
                 if( !($endTimeSlot > Carbon::create($schedule['end']) ) ) // chceck service time requirement will go beyond time schedule
@@ -53,13 +58,17 @@ class BookingService
     {
         foreach($events as $event)
         {
-            $start = Carbon::create($event['start']);
-            $end = Carbon::create($event['end']);
+            [$start, $end] = $this->getStartEndFromEvent($event);
             if(CarbonPeriod::create($start,$end)->overlaps($to,$from)){
                     return false;
             }
         }
         return true;
+    }
+
+    public function getStartEndFromEvent($event)
+    {
+        return [ Carbon::create($event['start']), Carbon::create($event['end']) ];
     }
 
     private function getSchedule()

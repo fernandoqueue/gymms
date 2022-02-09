@@ -24,7 +24,7 @@ class UserImpersonation extends baseImpersonation
 
         abort_if(
             (string) $token->tenant_id !== ((string) tenant()->getTenantKey())
-            OR
+            ||
             $token->created_at->diffInSeconds(Carbon::now()) > $ttl
             ,403
         );
